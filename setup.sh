@@ -1,5 +1,7 @@
 #!/bin/bash
 
+
+cp ./pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 cd /data
 git init
 git clone https://github.com/pulsetracker/W205-Ex2.git
@@ -15,6 +17,7 @@ pip install streamparse
 pip install psycopg2
 pip install tweepy
 sudo pip install requests==2.5.3
+
 
 echo "Make sure you set up your twitter credentials!"
 echo "Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
