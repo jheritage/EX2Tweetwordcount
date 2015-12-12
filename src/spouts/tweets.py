@@ -11,10 +11,17 @@ from streamparse.spout import Spout
 ################################################################################
 
 # Put your twitter credentials here
+
 consumer_key = "" 
 consumer_secret = "" 
 access_token = ""
 access_token_secret = ""
+
+consumer_key = "VHzBSjyzQje6x38wdn5nyoKPE"
+consumer_secret = "P6ORjyPH6770GTi01iT3i273VlWIqfSkAVoN33Qj0zJ2JSk14y"
+access_token = "4050176059-qc8Qa2CQ92A6e9ex99mIkyxVNvKSIyIkf9atJhP"
+access_token_secret = "AHAmoWrba2DMSygc3XZEdxBPndE8I5mgqDP5Vkgvij0TW"
+
 
 twitter_credentials = {
     "consumer_key"        :  consumer_key,

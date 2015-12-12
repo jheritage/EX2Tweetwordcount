@@ -1,9 +1,12 @@
+
 CREATE DATABASE tcount;
-/*Connect to database*/
+ALTER ROLE  postgres WITH PASSWORD 'pass';
 \c tcount;
 
-CREATE TABLE table_name (
-    column_name1 col_type (field_length) column_constraints,
-    column_name2 col_type (field_length),
-    );
+CREATE TABLE tweetwordcount
+(
+	word_id serial PRIMARY KEY,
+	word 	VARCHAR(150) NOT NULL,
+        count 	INT NOT NULL
+);
 

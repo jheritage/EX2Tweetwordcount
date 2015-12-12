@@ -2,6 +2,8 @@
 
 
 cp ./pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
+psql -d postgres -U postgres -f dbsetup.sql 
+
 cd /data
 git init
 git clone https://github.com/pulsetracker/W205-Ex2.git

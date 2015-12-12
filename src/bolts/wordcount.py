@@ -11,25 +11,20 @@ class WordCounter(Bolt):
         self.counts = Counter()
 
 	import psycopg2
-
-        conn = psycopg2.connect(database="Tcount", user="postgres", password="", host="localhost", port="5432")
+	
+	#clear database of old words
+        conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
 
         cur = conn.cursor()
-	try:
-	        cur.execute('''CREATE TABLE Tweetwordcount
-                        (
-                        word TEXT PRIMARY KEY     NOT NULL,
-                        count INT     NOT NULL);''')
-        	conn.commit()
-	        conn.close()
-	except:
- 		self.log('Error trying to add table to database--it probably already exists.')
+	cur.execute('''DELETE FROM tweetwordcount''')
+       	conn.commit()
+        conn.close()
 
 
     def process(self, tup):
 	import psycopg2
 
-        word = tup.values[0]
+        word = tup.values[0].replace("'","").replace("`","")
 
         # Write codes to increment the word count in Postgres
         # Use psycopg to interact with Postgres
@@ -42,14 +37,18 @@ class WordCounter(Bolt):
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
 
-	conn = psycopg2.connect(database="Tcount", user="postgres", password="pass", host="localhost", port="5432")
-
+	conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
+	cur = conn.cursor()
 	if self.counts[word] == 1:  #if this is the first time the word was seen
-		cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES (%s, 1)", word)
+		query = "INSERT INTO tweetwordcount (word,count) VALUES ('" + word + "',1);"
+		#cur.execute("INSERT INTO tweetwordcount (word,count) VALUES (%s, 1)", (word))
+		self.log("Query: " + query)
+		cur.execute(query)
 		conn.commit()
 	else:
 		uCount = self.counts[word]
-		cur.execute("UPDATE Tweetwordcount SET count=%s WHERE word=%s", (word, uCount))
+		query = "UPDATE tweetwordcount SET count=" + str(uCount) + " WHERE word='" + word + "';"
+		cur.execute(query)
 		conn.commit()
 
 
