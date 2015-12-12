@@ -5,8 +5,8 @@ cp ./pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 psql -d postgres -U postgres -f dbsetup.sql 
 
 cd /data
-git init
-git clone https://github.com/pulsetracker/W205-Ex2.git
+#git init
+#git clone https://github.com/pulsetracker/W205-Ex2.git
 sudo yum install python27-devel –y
 sudo curl -o ez_setup.py https://bootstrap.pypa.io/ez_setup.py
 sudo python ez_setup.py
@@ -14,12 +14,20 @@ sudo easy_install-2.7 pip
 pip install virtualenv
 wget --directory-prefix=/usr/bin/ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod a+x /usr/bin/lein
+export LEIN_ROOT="ok"
 sudo /usr/bin/lein
 pip install streamparse
 pip install psycopg2
 pip install tweepy
 sudo pip install requests==2.5.3
 
+# setup postgres
+sudo yum install postgresql
+cp  /data/EX2Tweetwordcount/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
+service postgresql start
+
+# setup the postgres database
+sudo -l postgres -c 'postrges -d postgrs -U postgres -f dbsetup.py'
 
 echo "Make sure you set up your twitter credentials!"
 echo "Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
