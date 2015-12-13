@@ -18,7 +18,7 @@ To get this app a-runnin’:
 
 cd /data
 git init
-git clone https://github.com/pulsetracker/W205-Ex2.git
+git clone https://github.com/pulsetracker/EX2Tweetwordcount.git
 cd EX2Tweetwordcount
 bash setup.sh  #this might take a while--it’s downloading and installing lots of software
 
