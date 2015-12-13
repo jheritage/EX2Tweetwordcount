@@ -1,13 +1,9 @@
 #!/bin/bash
 
 
-cp ./pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
-psql -d postgres -U postgres -f dbsetup.sql 
-
 cd /data
-#git init
-#git clone https://github.com/pulsetracker/W205-Ex2.git
-sudo yum install python27-devel –y
+# Install necessary libraries
+sudo yum install -y python27-devel 
 sudo curl -o ez_setup.py https://bootstrap.pypa.io/ez_setup.py
 sudo python ez_setup.py
 sudo easy_install-2.7 pip
@@ -22,9 +18,10 @@ pip install tweepy
 sudo pip install requests==2.5.3
 
 # setup postgres
-sudo yum install postgresql
+sudo yum install -y postgresql
+sudo service postgresql initdb
 cp  /data/EX2Tweetwordcount/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
-service postgresql start
+sudo service postgresql start
 
 # setup the postgres database
 sudo -l postgres -c 'postrges -d postgrs -U postgres -f dbsetup.py'
