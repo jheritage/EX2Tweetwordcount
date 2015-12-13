@@ -1,6 +1,7 @@
+ALTER ROLE  postgres WITH PASSWORD 'pass';i
 
 CREATE DATABASE tcount;
-ALTER ROLE  postgres WITH PASSWORD 'pass';
+
 \c tcount;
 
 CREATE TABLE tweetwordcount

@@ -24,7 +24,8 @@ cp  /data/EX2Tweetwordcount/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 sudo service postgresql start
 
 # setup the postgres database
-sudo -l postgres -c 'postrges -d postgrs -U postgres -f dbsetup.py'
+sudo -l postgres -c 'postrges -d postgres -U postgres -f /data/EX2Tweetwordcount/dbsetup.sql'
+
 
 echo "Make sure you set up your twitter credentials!"
 echo "Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
