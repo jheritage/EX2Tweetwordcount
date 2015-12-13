@@ -6,7 +6,7 @@ cd /data
 sudo yum install -y python27-devel 
 sudo curl -o ez_setup.py https://bootstrap.pypa.io/ez_setup.py
 sudo python ez_setup.py
-sudo easy_install-2.7 pip
+sudo easy_install pip
 pip install virtualenv
 wget --directory-prefix=/usr/bin/ https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein
 chmod a+x /usr/bin/lein
@@ -22,13 +22,16 @@ sudo yum install -y postgresql
 sudo service postgresql initdb
 cp  /data/EX2Tweetwordcount/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 sudo service postgresql start
+wait
 
 # setup the postgres database
 su -l postgres -c 'psql -d postgres -U postgres -f /data/EX2Tweetwordcount/dbsetup.sql'
 
 
-echo "Make sure you set up your twitter credentials!"
-echo "Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
+echo " "
+echo "           Make sure you set up your twitter credentials!"
+echo "           Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
+echo " "
 
 # Stuff used in initial setup
 #git clone https://github.com/UC-Berkeley-I-School/w205-labs-exercises.git
