@@ -1,4 +1,4 @@
-ALTER ROLE  postgres WITH PASSWORD 'pass';i
+ALTER ROLE  postgres WITH PASSWORD 'pass';
 
 CREATE DATABASE tcount;
 
