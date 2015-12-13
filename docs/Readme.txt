@@ -22,11 +22,11 @@ git clone https://github.com/pulsetracker/EX2Tweetwordcount.git
 cd EX2Tweetwordcount
 bash setup.sh  #this might take a while--it’s downloading and installing lots of software
 
-# whenever you see this (you’ll see it more than once):
+# press RETURN whenever you see this (you’ll see it more than once):
+#cd /usr/src
 #    WARNING: You're currently running as root; probably by accident.
 #    Press control-C to abort or Enter to continue as root.
 #    Set LEIN_ROOT to disable this warning.
-# press return
 
 # Edit the file EX2Tweetwordcount/src/spouts/tweets.py and insert your twitter app credentials at the indicated positions starting at line 15
 

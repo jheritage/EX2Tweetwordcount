@@ -33,6 +33,7 @@ su -l postgres -c 'psql -d postgres -U postgres -f /data/EX2Tweetwordcount/dbset
 echo " "
 echo "           Make sure you set up your twitter credentials!"
 echo "           Put them at the top of EX2Tweetwordcount/src/spouts/tweets.py"
+echo "           vim src/spouts/tweets.py should do it "
 echo " "
 
 # Stuff used in initial setup
