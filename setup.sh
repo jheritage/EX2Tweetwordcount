@@ -22,7 +22,9 @@ sudo yum install -y postgresql
 sudo service postgresql initdb
 cp  /data/EX2Tweetwordcount/pg_hba.conf /var/lib/pgsql/data/pg_hba.conf
 sudo service postgresql start
-wait
+
+echo "Waiting 20 seconds to let the database server get up and going"
+sleep 20
 
 # setup the postgres database
 su -l postgres -c 'psql -d postgres -U postgres -f /data/EX2Tweetwordcount/dbsetup.sql'
